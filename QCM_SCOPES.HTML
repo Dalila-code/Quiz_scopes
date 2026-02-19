@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QCM Scopes – Spécial Dalila</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    padding: 20px;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+h1 { text-align: center; }
+.question { margin-bottom: 20px; }
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #0066cc;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover { background: #004999; }
+.result {
+    margin-top: 25px;
+    padding: 15px;
+    background: #eef4ff;
+    border-radius: 8px;
+}
+.explanation {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-left: 4px solid #0066cc;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>QCM SCOPES – Niveau Avancé</h1>
+
+<form id="quizForm">
+
+<!-- QUESTIONS IDENTIQUES (inchangées) -->
+
+<div class="question">
+<p>1. Une chaudière au gaz dans les locaux relève :</p>
+<label><input type="radio" name="q1" value="A"> A) Scope 1</label><br>
+<label><input type="radio" name="q1" value="B"> B) Scope 2</label><br>
+<label><input type="radio" name="q1" value="C"> C) Scope 3</label>
+</div>
+
+<div class="question">
+<p>2. Extraction et transport du gaz utilisé :</p>
+<label><input type="radio" name="q2" value="A"> A) Scope 1</label><br>
+<label><input type="radio" name="q2" value="B"> B) Scope 2</label><br>
+<label><input type="radio" name="q2" value="C"> C) Scope 3</label>
+</div>
+
+<div class="question">
+<p>3. Électricité consommée (mix national) :</p>
+<label><input type="radio" name="q3" value="A"> A) Scope 1</label><br>
+<label><input type="radio" name="q3" value="B"> B) Scope 2</label><br>
+<label><input type="radio" name="q3" value="C"> C) Scope 3</label>
+</div>
+
+<div class="question">
+<p>4. Flotte de véhicules thermiques détenue :</p>
+<label><input type="radio" name="q4" value="A"> A) Scope 1</label><br>
+<label><input type="radio" name="q4" value="B"> B) Scope 2</label><br>
+<label><input type="radio" name="q4" value="C"> C) Scope 3</label>
+</div>
+
+<div class="question">
+<p>5. Livraisons sous-traitées :</p>
+<label><input type="radio" name="q5" value="A"> A) Scope 1</label><br>
+<label><input type="radio" name="q5" value="B"> B) Scope 2</label><br>
+<label><input type="radio" name="q5" value="C"> C) Scope 3</label>
+</div>
+
+<div class="question">
+<p>6. Déplacements domicile-travail :</p>
+<label><input type="radio" name="q6" value="A"> A) Scope 1</label><br>
+<label><input type="radio" name="q6" value="B"> B) Scope 2</label><br>
+<label><input type="radio" name="q6" value="C"> C) Scope 3</label>
+</div>
+
+<div class="question">
+<p>7. Électricité verte avec garanties d’origine (market-based) :</p>
+<label><input type="radio" name="q7" value="A"> A) Nulle</label><br>
+<label><input type="radio" name="q7" value="B"> B) Très faible</label><br>
+<label><input type="radio" name="q7" value="C"> C) Identique au mix national</label>
+</div>
+
+<div class="question">
+<p>8. Utilisation du produit par le client :</p>
+<label><input type="radio" name="q8" value="A"> A) Scope 1</label><br>
+<label><input type="radio" name="q8" value="B"> B) Scope 2</label><br>
+<label><input type="radio" name="q8" value="C"> C) Scope 3</label>
+</div>
+
+<div class="question">
+<p>9. Fabrication d’une machine achetée :</p>
+<label><input type="radio" name="q9" value="A"> A) Scope 1</label><br>
+<label><input type="radio" name="q9" value="B"> B) Scope 2</label><br>
+<label><input type="radio" name="q9" value="C"> C) Scope 3</label>
+</div>
+
+<div class="question">
+<p>10. Panneaux solaires sur le toit (production propre) :</p>
+<label><input type="radio" name="q10" value="A"> A) Scope 1</label><br>
+<label><input type="radio" name="q10" value="B"> B) Scope 2</label><br>
+<label><input type="radio" name="q10" value="C"> C) Aucune émission directe</label>
+</div>
+
+<button type="button" onclick="calculateScore()">Valider</button>
+
+</form>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calculateScore() {
+
+let answers = {
+    q1: "A",
+    q2: "C",
+    q3: "B",
+    q4: "A",
+    q5: "C",
+    q6: "C",
+    q7: "B",
+    q8: "C",
+    q9: "C",
+    q10: "C"
+};
+
+let explanations = {
+    q1: "Scope 1 : combustion directe sur site.",
+    q2: "Scope 3 : émissions amont liées à l’extraction et transport du gaz.",
+    q3: "Scope 2 : électricité produite ailleurs.",
+    q4: "Scope 1 : véhicule détenu et carburant brûlé directement.",
+    q5: "Scope 3 : transport sous-traité.",
+    q6: "Scope 3 : déplacements salariés hors contrôle direct.",
+    q7: "Market-based reflète le contrat énergétique : émissions très faibles.",
+    q8: "Scope 3 aval : utilisation du produit par le client.",
+    q9: "Scope 3 – catégorie immobilisations.",
+    q10: "Aucune combustion directe → pas d’émissions directes."
+};
+
+let score = 0;
+let correctionText = "";
+
+for (let key in answers) {
+    let selected = document.querySelector('input[name="'+key+'"]:checked');
+    if (selected && selected.value === answers[key]) {
+        score++;
+        correctionText += "<div class='explanation'>Q" + key.substring(1) + " ✔️ Bonne réponse. " + explanations[key] + "</div>";
+    } else {
+        correctionText += "<div class='explanation'>Q" + key.substring(1) + " ❌ Bonne réponse : " + answers[key] + ". " + explanations[key] + "</div>";
+    }
+}
+
+document.getElementById("result").innerHTML =
+    "<h2>Score : " + score + "/10</h2>" +
+    correctionText +
+    "<br><strong>Bravo pour ton travail, Dalila 🌿</strong>";
+}
+</script>
+
+</body>
+</html>
